@@ -1,0 +1,85 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ftps
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/ftps
+  uid: 518e35fe-d38f-4bf3-811f-584b956b660d
+  resourceVersion: '277374'
+  creationTimestamp: '2020-08-19T14:50:10Z'
+  labels:
+    app: ftps
+  managedFields:
+    - manager: controller
+      operation: Update
+      apiVersion: v1
+      time: '2020-08-19T14:50:10Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:loadBalancer':
+            'f:ingress': {}
+    - manager: dashboard
+      operation: Update
+      apiVersion: v1
+      time: '2020-08-19T15:10:25Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:ports':
+            'k:{"port":20,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:nodePort': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+            'k:{"port":21,"protocol":"TCP"}':
+              'f:name': {}
+              'f:targetPort': {}
+            'k:{"port":30020,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:nodePort': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+            'k:{"port":30021,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:nodePort': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+spec:
+  ports:
+    - name: ftps
+      protocol: TCP
+      port: 21
+      targetPort: 21
+      nodePort: 31669
+    - name: ftp
+      protocol: TCP
+      port: 20
+      targetPort: 20
+      nodePort: 31700
+    - name: ftps-priv
+      protocol: TCP
+      port: 30021
+      targetPort: 30021
+      nodePort: 31701
+    - name: ftp-priv
+      protocol: TCP
+      port: 30020
+      targetPort: 30020
+      nodePort: 31702
+  selector:
+    app: ftps
+  clusterIP: 10.102.18.217
+  type: LoadBalancer
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+status:
+  loadBalancer:
+    ingress:
+      - ip: 192.168.64.102

@@ -1,0 +1,37 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: grafana
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/grafana
+  uid: 9021de8d-06f5-4ebc-b060-5c1daef9044c
+  resourceVersion: '23977'
+  creationTimestamp: '2020-09-10T14:29:30Z'
+  labels:
+    app: grafana
+  managedFields:
+    - manager: controller
+      operation: Update
+      apiVersion: v1
+      time: '2020-09-12T10:34:01Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:loadBalancer':
+            'f:ingress': {}
+spec:
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 3000
+  selector:
+    app: grafana
+  clusterIP: 10.105.33.234
+  type: LoadBalancer
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+status:
+  loadBalancer:
+    ingress:
+      - ip: 192.168.64.103

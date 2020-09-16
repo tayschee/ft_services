@@ -1,0 +1,37 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: phpmyadmin
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/phpmyadmin
+  uid: ba5c676a-394e-4e62-adf8-a2e96afaf2e2
+  resourceVersion: '31405'
+  creationTimestamp: '2020-09-10T14:29:30Z'
+  labels:
+    app: phpmyadmin
+  managedFields:
+    - manager: controller
+      operation: Update
+      apiVersion: v1
+      time: '2020-09-12T12:45:17Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:loadBalancer':
+            'f:ingress': {}
+spec:
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+      nodePort: 5000
+  selector:
+    app: phpmyadmin
+  clusterIP: 10.96.51.249
+  type: LoadBalancer
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+status:
+  loadBalancer:
+    ingress:
+      - ip: 192.168.64.104

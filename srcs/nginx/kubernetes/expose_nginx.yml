@@ -1,0 +1,64 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/nginx
+  uid: c027eacc-d5f6-405c-8a86-423179149e2a
+  resourceVersion: '134106'
+  creationTimestamp: '2020-08-05T12:08:28Z'
+  labels:
+    run: nginx
+  managedFields:
+    - manager: controller
+      operation: Update
+      apiVersion: v1
+      time: '2020-08-05T12:08:28Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:loadBalancer':
+            'f:ingress': {}
+    - manager: dashboard
+      operation: Update
+      apiVersion: v1
+      time: '2020-08-05T12:17:04Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:ports':
+            'k:{"port":80,"protocol":"TCP"}':
+              .: {}
+              'f:name': {}
+              'f:nodePort': {}
+              'f:port': {}
+              'f:protocol': {}
+              'f:targetPort': {}
+            'k:{"port":443,"protocol":"TCP"}':
+              'f:name': {}
+spec:
+  ports:
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 443
+      nodePort: 31725
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 31726
+    - name: ssh
+      protocol: TCP
+      port: 22
+      targetPort: 22
+  selector:
+    run: nginx
+  clusterIP: 10.104.149.70
+  type: LoadBalancer
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+status:
+  loadBalancer:
+    ingress:
+      - ip: 192.168.64.100

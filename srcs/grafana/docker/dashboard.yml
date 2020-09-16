@@ -1,0 +1,45 @@
+apiVersion: 1
+
+providers:
+- name: 'nginx.json'
+  type: file
+  updateIntervalSeconds: 30
+  options:
+    path: /dashboards
+    foldersFromFilesStructure: true
+- name: 'ftps.json'
+  type: file
+  updateIntervalSeconds: 30
+  options:
+    path: /dashboards
+    foldersFromFilesStructure: true
+- name: 'mysql.json'
+  type: file
+  updateIntervalSeconds: 30
+  options:
+    path: /dashboards
+    foldersFromFilesStructure: true
+- name: 'phpmyadmin.json'
+  type: file
+  updateIntervalSeconds: 30
+  options:
+    path: /dashboards
+    foldersFromFilesStructure: true
+- name: 'wordpress.json'
+  type: file
+  updateIntervalSeconds: 30
+  options:
+    path: /dashboards
+    foldersFromFilesStructure: true
+- name: 'grafana.json'
+  type: file
+  updateIntervalSeconds: 30
+  options:
+    path: /dashboards
+    foldersFromFilesStructure: true
+- name: 'influxdb.json'
+  type: file
+  updateIntervalSeconds: 30
+  options:
+    path: /dashboards
+    foldersFromFilesStructure: true
